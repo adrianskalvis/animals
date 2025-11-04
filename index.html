@@ -3,10 +3,113 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Animals</title>
+  <title>Animal Kingdom</title>
+  <style>
+    /* Fona džungļu gradient */
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to bottom, #2b580c, #88b04b);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* Header stils */
+    header {
+      text-align: center;
+      padding: 2rem;
+      background: rgba(0,0,0,0.5);
+    }
+
+    header h1 {
+      font-size: 4rem;
+      margin: 0;
+      text-shadow: 2px 2px 8px #000;
+    }
+
+    /* Animēti dzīvnieku silueti */
+    .animals {
+      position: relative;
+      width: 100%;
+      height: 60vh;
+      overflow: hidden;
+      background: url('https://images.unsplash.com/photo-1596495577886-d920f6a0b519?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+    }
+
+    .animal {
+      position: absolute;
+      bottom: 0;
+      width: 100px;
+      animation: moveAnimal 20s linear infinite;
+    }
+
+    @keyframes moveAnimal {
+      0% { left: -120px; }
+      100% { left: 110%; }
+    }
+
+    /* Saturs */
+    .content {
+      padding: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      background: rgba(0,0,0,0.5);
+      border-radius: 15px;
+      margin-top: -50px;
+    }
+
+    .content h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .content p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+      background: rgba(0,0,0,0.3);
+    }
+
+    /* Audio kontroles paslēpšana */
+    audio {
+      display: none;
+    }
+  </style>
 </head>
 <body>
-  <h1>Sveiki no dzīvnieku pasaules!</h1>
-  <p>Man patīk kaķi, suņi un delfīni 🐾</p>
+
+  <!-- Automātiskā mūzika -->
+  <audio autoplay loop>
+    <source src="audio/theme.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <header>
+    <h1>🐾 Animal Kingdom 🐾</h1>
+  </header>
+
+  <div class="animals">
+    <img src="https://images.unsplash.com/photo-1601758123927-7c9d4a18e1f0?auto=format&fit=crop&w=200&q=80" class="animal" style="animation-duration: 25s;">
+    <img src="https://images.unsplash.com/photo-1575846604543-7e3a3c00ff48?auto=format&fit=crop&w=200&q=80" class="animal" style="animation-duration: 30s; bottom: 20px;">
+    <img src="https://images.unsplash.com/photo-1581235720704-8a4dcaec33f2?auto=format&fit=crop&w=200&q=80" class="animal" style="animation-duration: 35s; bottom: 40px;">
+  </div>
+
+  <div class="content">
+    <h2>Par mani un dzīvniekiem</h2>
+    <p>Šajā vietnē tu vari iepazīties ar dzīvnieku pasauli! Man patīk kaķi, suņi, delfīni un visi dzīvnieki dabā. Šī lapa ir mazs logs uz "Animal Kingdom" pasauli, kur daba, skaņas un dzīvnieki saplūst vienotā pieredzē.</p>
+    <p>Uzliec savu mūziku, sēdies ērtāk un izbaudi šo digitālo safari! 🌿🐒🦁</p>
+  </div>
+
+  <footer>
+    &copy; 2025 Animal Kingdom
+  </footer>
+
 </body>
 </html>
