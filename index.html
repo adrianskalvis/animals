@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Animal Kingdom</title>
   <style>
-    /* Fona džungļu gradient */
     body {
       margin: 0;
       font-family: 'Arial', sans-serif;
@@ -14,7 +13,6 @@
       overflow-x: hidden;
     }
 
-    /* Header stils */
     header {
       text-align: center;
       padding: 2rem;
@@ -27,7 +25,6 @@
       text-shadow: 2px 2px 8px #000;
     }
 
-    /* Animēti dzīvnieku silueti */
     .animals {
       position: relative;
       width: 100%;
@@ -41,6 +38,7 @@
       bottom: 0;
       width: 100px;
       animation: moveAnimal 20s linear infinite;
+      cursor: pointer;
     }
 
     @keyframes moveAnimal {
@@ -48,7 +46,18 @@
       100% { left: 110%; }
     }
 
-    /* Saturs */
+    .animal.L {
+      left: 40%;
+      top: 0;
+      width: 250px;
+      animation: moveDown 60s linear infinite;
+    }
+
+    @keyframes moveDown {
+      0% { top: -100px; }
+      100% { top: 100vh; }
+    }
+
     .content {
       padding: 2rem;
       max-width: 800px;
@@ -69,7 +78,6 @@
       line-height: 1.8;
     }
 
-    /* Footer */
     footer {
       text-align: center;
       padding: 1rem;
@@ -77,39 +85,61 @@
       background: rgba(0,0,0,0.3);
     }
 
-    /* Audio kontroles paslēpšana */
-    audio {
-      display: none;
-    }
+    audio { display: none; }
   </style>
 </head>
 <body>
 
-  <!-- Automātiskā mūzika -->
-  <audio autoplay loop>
-    <source src="audio/theme.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
+  <!-- Audio -->
+  <audio id="mainAudio" loop>
+    <source src="audio/animals.mp3" type="audio/mpeg">
   </audio>
 
   <header>
-    <h1>🐾 Animal Kingdom 🐾</h1>
+    <h1>Animal Kingdom</h1>
   </header>
 
   <div class="animals">
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRP7LcjXFskCGwwrFgjfGmEZd0G_reJjCn7PQ&s" class="animal" style="animation-duration: 25s;">
     <img src="https://pbs.twimg.com/media/Fy4zu_2XoAI7_5B.jpg" class="animal" style="animation-duration: 30s; bottom: 20px;">
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTn08Zlp9q02T4fXfunrHb7E-CGvclAnueqzg&s" class="animal" style="animation-duration: 35s; bottom: 40px;">
+    <img src="https://thunderdungeon.com/wp-content/uploads/2025/04/the-lion-memes-18-20250415.jpg" class="animal L" style="animation-duration: 60s; top: 20px;">
   </div>
 
   <div class="content">
-    <h2>Par mani un dzīvniekiem</h2>
-    <p>Šajā vietnē tu vari iepazīties ar dzīvnieku pasauli! Man patīk kaķi, suņi, delfīni un visi dzīvnieki dabā. Šī lapa ir mazs logs uz "Animal Kingdom" pasauli, kur daba, skaņas un dzīvnieki saplūst vienotā pieredzē.</p>
-    <p>Uzliec savu mūziku, sēdies ērtāk un izbaudi šo digitālo safari! 🌿🐒🦁</p>
+    <h2>OMEGA, SIGMA, ALPHA, DELTA, GAMMA ANIMALS</h2>
+    <p>"Alpha animal" refers to the highest-ranking individual in the dominance hierarchy of a social animal group</p>
+    <p>These animals often lead the group, make key decisions about movement or hunting, and maintain social order, though their status may be achieved through various means, such as being the parent of the group or fighting for dominance.🐒🦁</p>
   </div>
 
   <footer>
     &copy; 2025 Animal Kingdom
   </footer>
+
+  <script>
+    const audio = document.getElementById('mainAudio');
+    const lion = document.querySelector('.animal.L');
+
+    // Attempt autoplay on page load
+    window.addEventListener('load', () => {
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // If autoplay blocked, play on first click anywhere
+          document.body.addEventListener('click', () => {
+            audio.play();
+          }, { once: true });
+        });
+      }
+    });
+
+    // Switch music to mightyjungle.mp3 on lion click
+    lion.addEventListener('click', () => {
+      audio.src = 'audio/mightyjungle.mp3';
+      audio.play();
+      lion.style.animationPlayState = 'running';
+    });
+  </script>
 
 </body>
 </html>
